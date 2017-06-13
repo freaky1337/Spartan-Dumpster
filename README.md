@@ -51,7 +51,7 @@ sudo emerge cmake dev-vcs/git gdb libsdl2 mesa lua xdotool patchelf
 #### Download Hitlerhook:
 
 ```bash
-git clone --recursive https://github.com/raspbian/Hitlerhook
+git clone --recursive https://github.com/raspbianlike/Hitlerhook
 ```
 
 ```bash
