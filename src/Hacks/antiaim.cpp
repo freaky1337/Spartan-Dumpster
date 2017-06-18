@@ -544,8 +544,11 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			else if (random < 85 + (rand() % 15 ))
 				angle.y += temp;
 			break;
-		case AntiAimType_Y::SIDE:
-			yFlip ? angle.y += 90.f : angle.y -= 90.0f;
+		case AntiAimType_Y::SIDEJITTER:
+			yFlip ? angle.y += 90.0f : angle.y -= 90.0f;
+			break;
+		case AntiAimType_Y::SIDEWAYS:
+			angle.y += 90.0f;
 			break;
 		case AntiAimType_Y::TEST_LISP:
 			yFlip ? angle.y += 3163.0f : angle.y -= 3163.0f;
