@@ -548,7 +548,7 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			yFlip ? angle.y += 90.0f : angle.y -= 90.0f;
 			break;
 		case AntiAimType_Y::SIDEWAYS:
-			angle.y += 90.0f;
+			angle.y -= 90.0f;
 			break;
 		case AntiAimType_Y::TEST_LISP:
 			yFlip ? angle.y += 3163.0f : angle.y -= 3163.0f;
@@ -558,12 +558,6 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			break;
 		case AntiAimType_Y::FORWARDS:
 			angle.y -= 0.0f;
-			break;
-		case AntiAimType_Y::LEFT:
-			angle.y += 90.0f;
-			break;
-		case AntiAimType_Y::RIGHT:
-			angle.y -= 90.0f;
 			break;
 		case AntiAimType_Y::STATICAA:
 			angle.y = 0.0f;
