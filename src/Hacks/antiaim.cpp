@@ -458,6 +458,16 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			factor *= 25;
 			angle.y = fmodf(globalVars->curtime * factor, 360.0);
 			break;
+		case AntiAimType_Y::LEGITTROLLING:
+			Settings::AntiAim::Yaw::typeFake = AntiAimType_Y::NOAA;
+			angle.y -= 180.0f;
+			//Settings::AntiAim::Yaw::typeFake = AntiAimType_Y::NOAA;
+			break;
+		case AntiAimType_Y::LEGITTROLLING2:
+			Settings::AntiAim::Yaw::typeFake = AntiAimType_Y::NOAA;
+			angle.y -= 90.0f;
+		//	Settings::AntiAim::Yaw::typeFake = AntiAimType_Y::NOAA;
+			break;
 		case AntiAimType_Y::FAKE_SPIN_FAST:
 			if (bSendPacket) {
 			angle.y -= 45;
@@ -553,10 +563,17 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			angle.y = fmodf(globalVars->curtime * factor, 360.0);
 			break;
 		case AntiAimType_Y::FAKEHEAD:
-			if (bSendPacket)
-			angle.y = -1632764.0f;
-			else
-			angle.y = 1632764.0f;
+			  static bool choke = false;
+    		if (choke)
+    		{
+    			
+    			angle.y = -90.f;
+    		}
+     
+    		choke = !choke;
+			
+			break;
+		case AntiAimType_Y::NOAA:
 			break;
 		case AntiAimType_Y::JITTER:
 			yFlip ? angle.y -= 90.0f : angle.y -= 270.0f;
@@ -575,7 +592,7 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			yFlip ? angle.y += 90.0f : angle.y -= 90.0f;
 			break;
 		case AntiAimType_Y::SIDEWAYS:
-			angle.y -= 90.0f;
+			angle.y = 90.0f;
 			break;
 		case AntiAimType_Y::TEST_LISP:
 			if (bSendPacket)
