@@ -51,6 +51,9 @@ enum class AutostrafeType : int
 
 enum class AntiAimType_Y : int
 {
+	LEGITTROLLING,
+	LEGITTROLLING2,
+	NOAA,
 	SPIN_SLOW,
 	SMTHFAKE,
 	SPIN_FAST,
