@@ -54,6 +54,7 @@ enum class AntiAimType_Y : int
 	SPIN_SLOW,
 	SMTHFAKE,
 	SPIN_FAST,
+	FAKE_SPIN_FAST,
 	SPIN_RANDOM,
 	LBYSPIN,
 	RANDOMBACKJITTER,
@@ -83,10 +84,16 @@ enum class AntiAimType_Y : int
 	ANGEL_INVERSE,
 	ANGEL_SPIN,
 	LOWERBODY,
+	LOWERBODY_JITTER,
 	LOWERBODY_TEST,
 	LBYONGROUND,
 	LUA_UNCLAMPED,
 	LUA_UNCLAMPED2
+};
+
+enum class AntiAimType_Z : int
+{
+	REVERSE,
 };
 
 enum class AntiAimType_X : int
@@ -517,7 +524,11 @@ namespace Settings
 			extern AntiAimType_Y typeFake;
 			extern bool antiResolver;
 		}
-
+		namespace Roll
+		{
+			extern bool enabled;
+			extern AntiAimType_Z type;
+		}
 		namespace Pitch
 		{
 			extern bool enabled;
