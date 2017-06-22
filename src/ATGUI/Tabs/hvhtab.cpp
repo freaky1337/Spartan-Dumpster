@@ -3,7 +3,7 @@
 void HvH::RenderTab()
 {
 	const char* yTypes[] = {
-			"SLOW SPIN", "SMTH FAKE", "FAST SPIN", "FAKE FAST SPIN", "Random Spin", "LBYSPIN", "RANDOM BACKJITTER", "TURBO JITTER", "TURBO SPIN", "FAKE BACKWARDS", "CASUAL JITTER", "LBY JITTER", "Fake Head", "JITTER", "BACKJITTER", "SIDE JITTER", "SIDEWAYS", "BACKWARDS", "FORWARDS", "STATIC", "STATIC JITTER", "STATIC SMALL JITTER", "LUA", "LUA2", "CASUALAA",// safe
+			"Legit Trolling", "Legit Trolling 2", "No AA", "SLOW SPIN", "SMTH FAKE", "FAST SPIN", "FAKE FAST SPIN", "Random Spin", "LBYSPIN", "RANDOM BACKJITTER", "TURBO JITTER", "TURBO SPIN", "FAKE BACKWARDS", "CASUAL JITTER", "LBY JITTER", "Fake Head", "JITTER", "BACKJITTER", "SIDE JITTER", "SIDEWAYS", "BACKWARDS", "FORWARDS", "STATIC", "STATIC JITTER", "STATIC SMALL JITTER", "LUA", "LUA2", "CASUALAA",// safe
 			"LISP", "TEST LISP", "LISP SIDE", "LISP JITTER", "ANGEL BACKWARDS", "ANGEL INVERSE", "ANGEL SPIN", "LOWERBODY", "Lowerbody Jitter", "LOWERBODY TEST", "LBYONGROUND", "LUA UNCLAMPED", "LUA UNCLAMPED2", // untrusted
 	};
 	const char* zTypes[] = {
@@ -38,15 +38,29 @@ void HvH::RenderTab()
 					ImGui::PushItemWidth(-3);
 					if (ImGui::Combo(XORSTR("##YFAKETYPE"), (int*)& Settings::AntiAim::Yaw::typeFake, yTypes, IM_ARRAYSIZE(yTypes)))
 					{
+
+						
 						if (!ValveDSCheck::forceUT && ((*csGameRules) && (*csGameRules)->IsValveDS()) && Settings::AntiAim::Yaw::typeFake >= AntiAimType_Y::LISP)
 						{
 							Settings::AntiAim::Yaw::typeFake = AntiAimType_Y::SPIN_SLOW;
 							ImGui::OpenPopup(XORSTR("Error###UNTRUSTED_AA"));
+
 						}
+
 					}
+					
+					
 
 					if (ImGui::Combo(XORSTR("##YACTUALTYPE"), (int*)& Settings::AntiAim::Yaw::type, yTypes, IM_ARRAYSIZE(yTypes)))
 					{
+
+						if (Settings::AntiAim::Yaw::type <= AntiAimType_Y::LEGITTROLLING2)
+						{
+
+							Settings::AntiAim::Yaw::typeFake = AntiAimType_Y::NOAA;
+
+						}
+
 						if (!ValveDSCheck::forceUT && ((*csGameRules) && (*csGameRules)->IsValveDS()) && Settings::AntiAim::Yaw::type >= AntiAimType_Y::LISP)
 						{
 							Settings::AntiAim::Yaw::type = AntiAimType_Y::SPIN_SLOW;
