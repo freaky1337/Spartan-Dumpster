@@ -220,6 +220,8 @@ void Settings::LoadDefaultsOrSave(std::string path)
 	settings[XORSTR("AntiAim")][XORSTR("Yaw")][XORSTR("type")] = (int) Settings::AntiAim::Yaw::type;
 	settings[XORSTR("AntiAim")][XORSTR("Yaw")][XORSTR("type_fake")] = (int) Settings::AntiAim::Yaw::typeFake;
 	settings[XORSTR("AntiAim")][XORSTR("Yaw")][XORSTR("antiResolver")] = Settings::AntiAim::Yaw::antiResolver;
+	settings[XORSTR("AntiAim")][XORSTR("Roll")][XORSTR("type")] = (int) Settings::AntiAim::Roll::type;
+	settings[XORSTR("AntiAim")][XORSTR("Roll")][XORSTR("enabled")] = Settings::AntiAim::Roll::enabled;
 	settings[XORSTR("AntiAim")][XORSTR("Pitch")][XORSTR("enabled")] = Settings::AntiAim::Pitch::enabled;
 	settings[XORSTR("AntiAim")][XORSTR("Pitch")][XORSTR("type")] = (int) Settings::AntiAim::Pitch::type;
 	settings[XORSTR("AntiAim")][XORSTR("HeadEdge")][XORSTR("enabled")] = Settings::AntiAim::HeadEdge::enabled;
