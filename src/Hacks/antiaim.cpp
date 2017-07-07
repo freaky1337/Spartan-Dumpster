@@ -477,14 +477,11 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			}
 			break;
         case AntiAimType_Y::SMTHFAKE:
-           static bool packet = false;
-          
-           clamp = false;
-           packet = !packet;
+
            
            CreateMove::sendPacket = false;
-           yFlip ? angle.y = 98765 : angle.y = -98165;
-           
+          angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + 32400;
+           CreateMove::sendPacket = false;
         
             
 
@@ -608,7 +605,7 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			yFlip ? angle.y += 90.0f : angle.y -= 90.0f;
 			break;
 		case AntiAimType_Y::SIDEWAYS:
-			angle.y = 90.0f;
+			angle.y += 90.0f;
 			break;
 		case AntiAimType_Y::TEST_LISP:
 			if (bSendPacket)

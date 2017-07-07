@@ -3,6 +3,7 @@
 
 // Default aimbot settings
 bool Settings::Aimbot::enabled = false;
+bool Settings::Aimbot::pSilent = false;
 bool Settings::Aimbot::silent = false;
 bool Settings::Aimbot::friendly = false;
 Bone Settings::Aimbot::bone = Bone::BONE_HEAD;
@@ -67,7 +68,7 @@ const int headVectors = 11;
 static xdo_t *xdo = xdo_new(NULL);
 
 std::unordered_map<ItemDefinitionIndex, AimbotWeapon_t, Util::IntHash<ItemDefinitionIndex>> Settings::Aimbot::weapons = {
-		{ ItemDefinitionIndex::INVALID, { false, false, false, false, false, false, 700, Bone::BONE_HEAD, ButtonCode_t::MOUSE_MIDDLE, false, false, 1.0f,
+		{ ItemDefinitionIndex::INVALID, { false, false, false, false, false, false, false, 700, Bone::BONE_HEAD, ButtonCode_t::MOUSE_MIDDLE, false, false, 1.0f,
 												SmoothType::SLOW_END, false, 0.0f, false, 0.0f, true, 180.0f, false, 25.0f, 35.0f, false, false, 2.0f, 2.0f,
 												false, false, false, false, false, false, false, false, 0.1f ,false, 10.0f, false, false, 5.0f, false } },
 };
@@ -868,6 +869,14 @@ void Aimbot::CreateMove(CUserCmd* cmd)
 
 	Math::CorrectMovement(oldAngle, cmd, oldForward, oldSideMove);
 
+	bool bulletTime = true;
+
+	if (activeWeapon->GetNextPrimaryAttack() > globalVars->curtime)
+		bulletTime = false;
+
+	if (Settings::Aimbot::pSilent && (cmd->buttons & IN_ATTACK) && bulletTime)
+		CreateMove::sendPacket = false;
+
 	if (!Settings::Aimbot::silent)
 		engine->SetViewAngles(cmd->viewangles);
 }
@@ -911,6 +920,7 @@ void Aimbot::UpdateValues()
 
 	Settings::Aimbot::enabled = currentWeaponSetting.enabled;
 	Settings::Aimbot::silent = currentWeaponSetting.silent;
+	Settings::Aimbot::pSilent = currentWeaponSetting.pSilent;
 	Settings::Aimbot::friendly = currentWeaponSetting.friendly;
 	Settings::Aimbot::bone = currentWeaponSetting.bone;
 	Settings::Aimbot::aimkey = currentWeaponSetting.aimkey;
