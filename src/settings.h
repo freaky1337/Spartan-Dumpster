@@ -55,6 +55,7 @@ enum class AntiAimType_Y : int
 	LEGITTROLLING2,
 	NOAA,
 	SPIN_SLOW,
+	Tank,
 	EVENSLOWERSPIN,
 	SMTHFAKE,
 	SPIN_FAST,

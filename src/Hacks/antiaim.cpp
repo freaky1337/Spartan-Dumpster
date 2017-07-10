@@ -477,11 +477,10 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			}
 			break;
         case AntiAimType_Y::SMTHFAKE:
-
+        	CreateMove::sendPacket = false;
+           angle.y += 1381738;
+           CreateMove::sendPacket = false;
            
-           CreateMove::sendPacket = false;
-          angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + 32400;
-           CreateMove::sendPacket = false;
         
             
 
@@ -491,6 +490,18 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			factor *= rand() % 25;
 			angle.y = fmodf(globalVars->curtime * factor, 360.0);
 			break;
+			case AntiAimType_Y::Tank: 
+			
+			if(bSendPacket) {
+				random = rand() % 4; switch (random) { case 1: angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + rand() % 35 + 165; break; case 2: yFlip ? angle.y -= 160 : angle.y += 160;
+				break; case 3: factor = 360.0 / M_PHI; factor *= rand() % 25; float x = fmodf(globalVars->curtime * factor, 360.0); factor *= 5; float y = fmodf(globalVars->curtime * factor, 360.0f); if (y >= 100.0f) { y -= 170.0f; } if (y <= 200.0f) { y += 305.00f;
+				}
+				angle.y=((x/y)+60.2f)*M_PI;
+				} } else {
+				random = rand() % 4; switch (random) { case 1: angle.y -= 180.0f; break; case 2: yFlip ? angle.y += 90.f : angle.y -= 90.0f;
+				break; case 3: factor = 360.0 / M_PHI; angle.y = fmodf(globalVars->curtime * factor, 360.0);
+
+				} }
 		case AntiAimType_Y::LBYSPIN:
 			factor =  360.0 / M_PHI;
 			angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + fmodf(globalVars->curtime * factor, 360.0);
@@ -573,18 +584,13 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			angle.y = fmodf(globalVars->curtime * factor, 360.0);
 			break;
 		case AntiAimType_Y::EVENSLOWERSPIN:
-			factor =  45.0 / M_PHI;
+			factor =  360.0 / M_PHI;
+			factor *= 0.5f;
 			angle.y = fmodf(globalVars->curtime * factor, 360.0);
 		case AntiAimType_Y::FAKEHEAD:
-			  static bool choke = false;
-    		if (choke)
-    		{
-
-    			angle.y = -90.f;
-    		}
-
-    		choke = !choke;
-
+			 CreateMove::sendPacket = false;
+			 angle.y += 1337;
+			 CreateMove::sendPacket = false;
 			break;
 		case AntiAimType_Y::NOAA:
 			break;
