@@ -490,7 +490,7 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 			factor *= rand() % 25;
 			angle.y = fmodf(globalVars->curtime * factor, 360.0);
 			break;
-			case AntiAimType_Y::Tank: 
+		case AntiAimType_Y::Tank: 
 			
 			if(bSendPacket) {
 				random = rand() % 4; switch (random) { case 1: angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + rand() % 35 + 165; break; case 2: yFlip ? angle.y -= 160 : angle.y += 160;
@@ -502,6 +502,7 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 				break; case 3: factor = 360.0 / M_PHI; angle.y = fmodf(globalVars->curtime * factor, 360.0);
 
 				} }
+			break;
 		case AntiAimType_Y::LBYSPIN:
 			factor =  360.0 / M_PHI;
 			angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + fmodf(globalVars->curtime * factor, 360.0);
