@@ -4,7 +4,7 @@
 cmake . || exit 1
 make -j$(grep "^processor" /proc/cpuinfo | wc -l) "$@" || exit 1
 
-BUILD_ID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)HeilHitler88
+BUILD_ID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
 if [ -f build_id ]; then
     filename=$(cat build_id)

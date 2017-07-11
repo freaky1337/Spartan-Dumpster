@@ -176,6 +176,7 @@ void Settings::LoadDefaultsOrSave(std::string path)
 		weaponSetting[XORSTR("AutoPistol")][XORSTR("Enabled")] = i.second.autoPistolEnabled;
 		weaponSetting[XORSTR("AutoShoot")][XORSTR("Enabled")] = i.second.autoShootEnabled;
 		weaponSetting[XORSTR("AutoScope")][XORSTR("Enabled")] = i.second.autoScopeEnabled;
+		weaponSetting[XORSTR("Aimbot")][XORSTR("AutoShoot")][XORSTR("velocityCheck")] = Settings::Aimbot::AutoShoot::velocityCheck;
 		weaponSetting[XORSTR("NoShoot")][XORSTR("Enabled")] = i.second.noShootEnabled;
 		weaponSetting[XORSTR("IgnoreJump")][XORSTR("Enabled")] = i.second.ignoreJumpEnabled;
 		weaponSetting[XORSTR("SmokeCheck")][XORSTR("Enabled")] = i.second.smokeCheck;
@@ -187,6 +188,7 @@ void Settings::LoadDefaultsOrSave(std::string path)
 		weaponSetting[XORSTR("AutoSlow")][XORSTR("enabled")] = i.second.autoSlow;
 		weaponSetting[XORSTR("Prediction")][XORSTR("enabled")] = i.second.predEnabled;
 
+
 		for (int bone = (int) DesiredBones::BONE_PELVIS; bone <= (int) DesiredBones::BONE_RIGHT_SOLE; bone++)
 			weaponSetting[XORSTR("DesiredBones")][XORSTR("Bones")][bone] = i.second.desiredBones[bone];
 
@@ -197,7 +199,7 @@ void Settings::LoadDefaultsOrSave(std::string path)
 	}
 
 	settings[XORSTR("Aimbot")][XORSTR("AutoCrouch")][XORSTR("enabled")] = Settings::Aimbot::AutoCrouch::enabled;
-	settings[XORSTR("Aimbot")][XORSTR("AutoShoot")][XORSTR("velocityCheck")] = Settings::Aimbot::AutoShoot::velocityCheck;
+	//settings[XORSTR("Aimbot")][XORSTR("AutoShoot")][XORSTR("velocityCheck")] = Settings::Aimbot::AutoShoot::velocityCheck;
 
 	settings[XORSTR("Resolver")][XORSTR("resolve_all")] = Settings::Resolver::resolveAll;
 
