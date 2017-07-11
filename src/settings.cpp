@@ -404,6 +404,8 @@ void Settings::LoadDefaultsOrSave(std::string path)
 
 	settings[XORSTR("Airstuck")][XORSTR("enabled")] = Settings::Airstuck::enabled;
 	settings[XORSTR("Airstuck")][XORSTR("key")] = Util::GetButtonName(Settings::Airstuck::key);
+	//settings[XORSTR("anglechange")][XORSTR("enabled")] = Settings::anglechange::enabled;
+	//settings[XORSTR("anglechange")][XORSTR("key")] = Util::GetButtonName(Settings::anglechange::key);
 
 	settings[XORSTR("SkinChanger")][XORSTR("Skins")][XORSTR("enabled")] = Settings::Skinchanger::Skins::enabled;
 	settings[XORSTR("SkinChanger")][XORSTR("Models")][XORSTR("enabled")] = Settings::Skinchanger::Models::enabled;
@@ -820,6 +822,13 @@ void Settings::LoadConfig(std::string path)
 
 	GetVal(settings[XORSTR("Airstuck")][XORSTR("enabled")], &Settings::Airstuck::enabled);
 	GetButtonCode(settings[XORSTR("Airstuck")][XORSTR("key")], &Settings::Airstuck::key);
+	GetVal(settings[XORSTR("angleHelper")][XORSTR("enabled")], &Settings::angleHelper::enabled);
+	GetButtonCode(settings[XORSTR("angleHelper")][XORSTR("key")], &Settings::angleHelper::key);
+	GetButtonCode(settings[XORSTR("angleHelper")][XORSTR("key2")], &Settings::angleHelper::key2);
+	GetButtonCode(settings[XORSTR("angleHelper")][XORSTR("key3")], &Settings::angleHelper::key3);
+	GetButtonCode(settings[XORSTR("angleHelper")][XORSTR("key4")], &Settings::angleHelper::key4);
+	//GetVal(settings[XORSTR("anglechange")][XORSTR("enabled")], &Settings::anglechange::enabled);
+	//GetButtonCode(settings[XORSTR("anglechange")][XORSTR("key")], &Settings::anglechange::key);
 
 	Settings::Skinchanger::Skins::enabled = false;
 	Settings::Skinchanger::skinsCT.clear();

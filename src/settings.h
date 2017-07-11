@@ -72,9 +72,15 @@ enum class AntiAimType_Y : int
 	JITTER,
 	BACKJITTER,
 	SIDEJITTER,
-	SIDEWAYS,
+	SIDEWAYSRIGHT,
+	SIDEWAYSLEFT,
+	STATICSIDEWAYSRIGHT,
+	STATICSIDEWAYSLEFT,
+	FAKESIDEWAYS,
 	BACKWARDS,
+	STATICBACKWARDS,
 	FORWARDS,
+	STATICFORWARDS,
 	STATICAA,
 	STATICJITTER,
 	STATICSMALLJITTER,
@@ -531,6 +537,7 @@ namespace Settings
 			extern AntiAimType_Y type;
 			extern AntiAimType_Y typeFake;
 			extern bool antiResolver;
+			
 		}
 		namespace Roll
 		{
@@ -858,6 +865,14 @@ namespace Settings
 		extern ButtonCode_t key;
 	}
 
+	namespace angleHelper
+	{ 
+		extern bool enabled;
+		extern ButtonCode_t key;
+		extern ButtonCode_t key2;
+		extern ButtonCode_t key3;
+		extern ButtonCode_t key4;
+	}
 	namespace Autoblock
 	{
 		extern bool enabled;

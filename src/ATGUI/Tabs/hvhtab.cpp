@@ -3,7 +3,7 @@
 void HvH::RenderTab()
 {
 	const char* yTypes[] = {
-			"Legit Trolling", "Legit Trolling 2", "No AA", "SLOW SPIN", "Tank", "Even Slower Spin", "SMTH FAKE", "FAST SPIN", "FAKE FAST SPIN", "Random Spin", "LBYSPIN", "RANDOM BACKJITTER", "TURBO JITTER", "TURBO SPIN", "FAKE BACKWARDS", "CASUAL JITTER", "LBY JITTER", "Fake Head", "JITTER", "BACKJITTER", "SIDE JITTER", "SIDEWAYS", "BACKWARDS", "FORWARDS", "STATIC", "STATIC JITTER", "STATIC SMALL JITTER", "LUA", "LUA2", "CASUALAA",// safe
+			"Legit Trolling", "Legit Trolling 2", "No AA", "SLOW SPIN", "Tank", "Even Slower Spin", "SMTH FAKE", "FAST SPIN", "FAKE FAST SPIN", "Random Spin", "LBYSPIN", "RANDOM BACKJITTER", "TURBO JITTER", "TURBO SPIN", "FAKE BACKWARDS", "CASUAL JITTER", "LBY JITTER", "Fake Head", "JITTER", "BACKJITTER", "SIDE JITTER", "SIDEWAYS RIGHT", "SIDEWAYS LEFT", "STATIC SIDEWAYS RIGHT", "STATIC SIDEWAYS LEFT", "FAKE SIDEWAYS", "BACKWARDS", "STATIC BACKWARDS", "FORWARDS", "STATIC FORWARDS", "STATIC", "STATIC JITTER", "STATIC SMALL JITTER", "LUA", "LUA2", "CASUALAA",// safe
 			"LISP", "TEST LISP", "LISP SIDE", "LISP JITTER", "ANGEL BACKWARDS", "ANGEL INVERSE", "ANGEL SPIN", "LOWERBODY", "Lowerbody Jitter", "LOWERBODY TEST", "LBYONGROUND", "LUA UNCLAMPED", "LUA UNCLAMPED2", // untrusted
 	};
 	const char* zTypes[] = {
@@ -179,7 +179,7 @@ void HvH::RenderTab()
 				ImGui::Text(XORSTR("Lua AntiAim Editor -- X Axis"));
 				ImGui::InputTextMultiline(XORSTR("##LUAX"), Settings::AntiAim::Lua::scriptX, sizeof(Settings::AntiAim::Lua::scriptX));
 			}
-			ImGui::Separator();
+		//	ImGui::Separator();
 
 			if( ((Settings::AntiAim::Yaw::type == Settings::AntiAim::Yaw::typeFake) && // if they are equal to each other and a LUA type
 						(Settings::AntiAim::Yaw::type == AntiAimType_Y::LUA1 ||
@@ -228,6 +228,39 @@ void HvH::RenderTab()
 					ImGui::InputTextMultiline(XORSTR("##LUAY2"), Settings::AntiAim::Lua::scriptY2, sizeof(Settings::AntiAim::Lua::scriptY2));
 				}
 			}
+			//ImGui::Separator();
+			ImGui::Checkbox(XORSTR("Angle Helper"), &Settings::angleHelper::enabled);
+
+				if(Settings::angleHelper::enabled){
+					ImGui::NextColumn();
+	// Sumone fix this im too lazy for it, everything is already se up in settings.h and settings.cpp
+
+	{
+		ImGui::BeginChild(XORSTR("HVH3"), ImVec2(0, 0), true);
+		{
+					ImGui::Text(XORSTR("Arrow Key Right will change your Fake Yaw to +90"));
+					ImGui::Text(XORSTR("Arrow Key Left will change your Fake Yaw to -90"));
+					ImGui::Text(XORSTR("Arrow Key Down will change your Fake Yaw to -0"));
+					ImGui::Text(XORSTR("Arrow Key Up will change your Fake Yaw to -180"));
+					ImGui::Text(XORSTR("Real Angles are the negative/positive of the Fake Yaw"));
+
+
+		}
+					ImGui::EndChild();
+					ImGui::NextColumn();
+					ImGui::Separator();
+					ImGui::PushItemWidth(-1);
+			{
+				
+				/*UI::KeyBindButton(&Settings::angleHelper::key);
+				UI::KeyBindButton(&Settings::angleHelper::key2);
+				UI::KeyBindButton(&Settings::angleHelper::key3);
+				UI::KeyBindButton(&Settings::angleHelper::key4);
+						*/
+					
+			}
+		}
+	}
 			ImGui::EndChild();
 		}
 	}
