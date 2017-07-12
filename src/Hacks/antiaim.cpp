@@ -479,7 +479,7 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
         case AntiAimType_Y::SMTHFAKE:
         	CreateMove::sendPacket = false;
           angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + rand() % 35 + 165;
-           CreateMove::sendPacket = false;
+          	CreateMove::sendPacket = false;
            break;
 	case AntiAimType_Y::SPIN_RANDOM:
 			factor = 360.0 / M_PHI;
@@ -526,6 +526,12 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 		case AntiAimType_Y::LBYSPIN:
 			factor =  360.0 / M_PHI;
 			angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + fmodf(globalVars->curtime * factor, 360.0);
+			break;
+		case AntiAimType_Y::FAKELBYSPIN:
+			factor =  360.0 / M_PHI;
+			CreateMove::sendPacket = false;
+			angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget() + fmodf(globalVars->curtime * factor, 360.0);
+			CreateMove::sendPacket = false;
 			break;
 		case AntiAimType_Y::RANDOMBACKJITTER:
 			angle.y -= 180;
@@ -742,7 +748,9 @@ static void DoAntiAimY(QAngle& angle, int command_number, bool bFlip, bool& clam
 		case AntiAimType_Y::LOWERBODY_TEST:
 			
 			if(angle.y = *((C_BasePlayer*)entityList->GetClientEntity(engine->GetLocalPlayer()))->GetLowerBodyYawTarget())
-				angle.y += 235;
+				angle.y += 90;
+			else
+				angle.y -= 90;
 			break;
 		case AntiAimType_Y::ANGEL_SPIN:
 			clamp = false;

@@ -48,24 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/benjamin/Hitlerhook
+CMAKE_SOURCE_DIR = /home/raspbian/Hitlerhook
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/benjamin/Hitlerhook
+CMAKE_BINARY_DIR = /home/raspbian/Hitlerhook
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -78,11 +67,22 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/Hitlerhook/CMakeFiles /home/benjamin/Hitlerhook/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/raspbian/Hitlerhook/CMakeFiles /home/raspbian/Hitlerhook/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/Hitlerhook/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/raspbian/Hitlerhook/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -581,6 +581,33 @@ src/Hacks/airstuck.s: src/Hacks/airstuck.cpp.s
 src/Hacks/airstuck.cpp.s:
 	$(MAKE) -f CMakeFiles/Hitlerhook.dir/build.make CMakeFiles/Hitlerhook.dir/src/Hacks/airstuck.cpp.s
 .PHONY : src/Hacks/airstuck.cpp.s
+
+src/Hacks/anglehelper.o: src/Hacks/anglehelper.cpp.o
+
+.PHONY : src/Hacks/anglehelper.o
+
+# target to build an object file
+src/Hacks/anglehelper.cpp.o:
+	$(MAKE) -f CMakeFiles/Hitlerhook.dir/build.make CMakeFiles/Hitlerhook.dir/src/Hacks/anglehelper.cpp.o
+.PHONY : src/Hacks/anglehelper.cpp.o
+
+src/Hacks/anglehelper.i: src/Hacks/anglehelper.cpp.i
+
+.PHONY : src/Hacks/anglehelper.i
+
+# target to preprocess a source file
+src/Hacks/anglehelper.cpp.i:
+	$(MAKE) -f CMakeFiles/Hitlerhook.dir/build.make CMakeFiles/Hitlerhook.dir/src/Hacks/anglehelper.cpp.i
+.PHONY : src/Hacks/anglehelper.cpp.i
+
+src/Hacks/anglehelper.s: src/Hacks/anglehelper.cpp.s
+
+.PHONY : src/Hacks/anglehelper.s
+
+# target to generate assembly for a file
+src/Hacks/anglehelper.cpp.s:
+	$(MAKE) -f CMakeFiles/Hitlerhook.dir/build.make CMakeFiles/Hitlerhook.dir/src/Hacks/anglehelper.cpp.s
+.PHONY : src/Hacks/anglehelper.cpp.s
 
 src/Hacks/antiaim.o: src/Hacks/antiaim.cpp.o
 
@@ -2802,9 +2829,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Hitlerhook"
-	@echo "... rebuild_cache"
 	@echo "... src/ATGUI/Tabs/aimbottab.o"
 	@echo "... src/ATGUI/Tabs/aimbottab.i"
 	@echo "... src/ATGUI/Tabs/aimbottab.s"
@@ -2856,6 +2883,9 @@ help:
 	@echo "... src/Hacks/airstuck.o"
 	@echo "... src/Hacks/airstuck.i"
 	@echo "... src/Hacks/airstuck.s"
+	@echo "... src/Hacks/anglehelper.o"
+	@echo "... src/Hacks/anglehelper.i"
+	@echo "... src/Hacks/anglehelper.s"
 	@echo "... src/Hacks/antiaim.o"
 	@echo "... src/Hacks/antiaim.i"
 	@echo "... src/Hacks/antiaim.s"
