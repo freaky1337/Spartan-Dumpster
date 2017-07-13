@@ -34,7 +34,7 @@ float Settings::Aimbot::AimStep::min = 25.0f;
 float Settings::Aimbot::AimStep::max = 35.0f;
 bool Settings::Aimbot::AutoPistol::enabled = false;
 bool Settings::Aimbot::AutoShoot::enabled = false;
-bool Settings::Aimbot::AutoShoot::velocityCheck = false;
+bool Settings::Aimbot::velocityCheck::enabled = false;
 bool Settings::Aimbot::AutoShoot::autoscope = false;
 bool Settings::Aimbot::RCS::enabled = false;
 bool Settings::Aimbot::RCS::always_on = false;
@@ -664,7 +664,7 @@ static void AutoShoot(C_BasePlayer* player, C_BaseCombatWeapon* activeWeapon, CU
 	if (Settings::Aimbot::AutoShoot::autoscope && activeWeapon->GetCSWpnData()->GetZoomLevels() > 0 && !localplayer->IsScoped())
 		cmd->buttons |= IN_ATTACK2;
 
-	if( Settings::Aimbot::AutoShoot::velocityCheck && localplayer->GetVelocity().Length() > (activeWeapon->GetCSWpnData()->GetMaxPlayerSpeed() / 3) )
+	if( Settings::Aimbot::velocityCheck::enabled && localplayer->GetVelocity().Length() > (activeWeapon->GetCSWpnData()->GetMaxPlayerSpeed() / 3) )
 		return;
 	if( Settings::Aimbot::SpreadLimit::enabled && ((activeWeapon->GetSpread() + activeWeapon->GetInaccuracy()) > Settings::Aimbot::SpreadLimit::value))
 		return;

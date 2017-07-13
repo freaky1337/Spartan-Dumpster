@@ -176,7 +176,6 @@ void Settings::LoadDefaultsOrSave(std::string path)
 		weaponSetting[XORSTR("AutoPistol")][XORSTR("Enabled")] = i.second.autoPistolEnabled;
 		weaponSetting[XORSTR("AutoShoot")][XORSTR("Enabled")] = i.second.autoShootEnabled;
 		weaponSetting[XORSTR("AutoScope")][XORSTR("Enabled")] = i.second.autoScopeEnabled;
-		weaponSetting[XORSTR("Aimbot")][XORSTR("AutoShoot")][XORSTR("velocityCheck")] = Settings::Aimbot::AutoShoot::velocityCheck;
 		weaponSetting[XORSTR("NoShoot")][XORSTR("Enabled")] = i.second.noShootEnabled;
 		weaponSetting[XORSTR("IgnoreJump")][XORSTR("Enabled")] = i.second.ignoreJumpEnabled;
 		weaponSetting[XORSTR("SmokeCheck")][XORSTR("Enabled")] = i.second.smokeCheck;
@@ -187,6 +186,7 @@ void Settings::LoadDefaultsOrSave(std::string path)
 		weaponSetting[XORSTR("AutoWall")][XORSTR("Value")] = i.second.autoWallValue;
 		weaponSetting[XORSTR("AutoSlow")][XORSTR("enabled")] = i.second.autoSlow;
 		weaponSetting[XORSTR("Prediction")][XORSTR("enabled")] = i.second.predEnabled;
+		weaponSetting[XORSTR("Aimbot")][XORSTR("velocityCheck")] = Settings::Aimbot::velocityCheck::enabled;
 
 
 		for (int bone = (int) DesiredBones::BONE_PELVIS; bone <= (int) DesiredBones::BONE_RIGHT_SOLE; bone++)
@@ -608,6 +608,7 @@ void Settings::LoadConfig(std::string path)
 				weaponSetting[XORSTR("AutoSlow")][XORSTR("enabled")].asBool(),
 				weaponSetting[XORSTR("Prediction")][XORSTR("enabled")].asBool(),
 				weaponSetting[XORSTR("moveMouse")].asBool()
+
 		};
 
 		for (int bone = (int) DesiredBones::BONE_PELVIS; bone <= (int) DesiredBones::BONE_RIGHT_SOLE; bone++)
@@ -616,8 +617,7 @@ void Settings::LoadConfig(std::string path)
 	}
 
 	GetVal(settings[XORSTR("Aimbot")][XORSTR("AutoCrouch")][XORSTR("enabled")], &Settings::Aimbot::AutoCrouch::enabled);
-	GetVal(settings[XORSTR("Aimbot")][XORSTR("AutoShoot")][XORSTR("velocityCheck")], &Settings::Aimbot::AutoShoot::velocityCheck);
-
+	GetVal(settings[XORSTR("Aimbot")][XORSTR("velocityCheck")], &Settings::Aimbot::velocityCheck::enabled);
 
 	GetVal(settings[XORSTR("Resolver")][XORSTR("resolve_all")], &Settings::Resolver::resolveAll);
 

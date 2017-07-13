@@ -369,7 +369,7 @@ void Aimbot::RenderTab()
 			ImGui::Separator();
 			if (ImGui::Checkbox(XORSTR("Auto Shoot"), &autoShootEnabled))
 				UI::UpdateWeaponSettings();
-			ImGui::Checkbox(XORSTR("Velocity Check"), &Settings::Aimbot::AutoShoot::velocityCheck);
+			ImGui::Checkbox(XORSTR("Velocity Check"), &Settings::Aimbot::velocityCheck::enabled);
 			if( ImGui::Checkbox(XORSTR("Spread Limit"), &spreadLimitEnabled) )
 				UI::UpdateWeaponSettings();
 			if( ImGui::SliderFloat(XORSTR("##SPREADLIMIT"), &spreadLimit, 0, 0.1) )
