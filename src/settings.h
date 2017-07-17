@@ -579,6 +579,11 @@ namespace Settings
 		}
 	}
 
+		namespace MoonWalk
+	{
+		extern bool enabled;
+	}
+	
 	namespace Resolver
 	{
 		extern bool resolveAll;
