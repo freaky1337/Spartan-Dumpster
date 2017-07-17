@@ -171,7 +171,8 @@ void HvH::RenderTab()
 			ImGui::Separator();
 			ImGui::Text(XORSTR("Movement"));
 			ImGui::Checkbox(XORSTR("Auto Crouch"), &Settings::Aimbot::AutoCrouch::enabled);
-
+			ImGui::Checkbox(XORSTR("MoonWalk"), &Settings::MoonWalk::enabled);
+			
 			ImGui::Separator();
 			ImGui::Checkbox(XORSTR("Lua Debug Mode"), &Settings::AntiAim::Lua::debugMode);
 			if( Settings::AntiAim::Pitch::type == AntiAimType_X::LUA1 || Settings::AntiAim::Pitch::type == AntiAimType_X ::LUA_UNCLAMPED )
