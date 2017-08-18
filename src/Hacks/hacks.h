@@ -39,3 +39,4 @@
 #include "valvedscheck.h"
 #include "view.h"
 #include "walkbot.h"
+#include "moonwalk.h"

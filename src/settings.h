@@ -132,6 +132,8 @@ enum class ChamsType : int
 	CHAMS_XQZ,
 	CHAMS_FLAT,
 	CHAMS_FLAT_XQZ,
+	CHAMS_CRYSTAL,
+	CHAMS_GOLD,
 };
 
 enum class BoxType : int
@@ -166,6 +168,8 @@ enum class TeamColorType : int
 enum class ArmsType : int
 {
 	DEFAULT,
+	CRYSTAL,
+	GOLD,
 	WIREFRAME,
 	NONE,
 };
@@ -575,6 +579,11 @@ namespace Settings
 		}
 	}
 
+		namespace MoonWalk
+	{
+		extern bool enabled;
+	}
+	
 	namespace Resolver
 	{
 		extern bool resolveAll;

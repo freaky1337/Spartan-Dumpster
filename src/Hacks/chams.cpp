@@ -17,6 +17,8 @@ IMaterial* materialChams;
 IMaterial* materialChamsIgnorez;
 IMaterial* materialChamsFlat;
 IMaterial* materialChamsFlatIgnorez;
+IMaterial* materialChamsCrystal;
+IMaterial* materialChamsGold;
 IMaterial* materialChamsArms;
 IMaterial* materialChamsWeapons;
 
@@ -146,6 +148,16 @@ static void DrawArms(const ModelRenderInfo_t& pInfo)
 			mat->AlphaModulate(1.0f);
 			mat->ColorModulate(Settings::ESP::Chams::Arms::color.Color());
 			break;
+			case ArmsType::CRYSTAL:
+			mat = material->FindMaterial("models/inventory_items/trophy_majors/crystal_clear", TEXTURE_GROUP_OTHER);
+			mat->AlphaModulate(1.0f);
+			mat->ColorModulate(Settings::ESP::Chams::Arms::color.Color());
+			break;
+			case ArmsType::GOLD:
+			mat = material->FindMaterial("models/inventory_items/trophy_majors/gold", TEXTURE_GROUP_OTHER);
+			mat->AlphaModulate(1.0f);
+			mat->ColorModulate(Settings::ESP::Chams::Arms::color.Color());
+			break;
 	}
 
 	mat->SetMaterialVarFlag(MATERIAL_VAR_WIREFRAME, Settings::ESP::Chams::Arms::type == ArmsType::WIREFRAME);
@@ -171,6 +183,8 @@ void Chams::DrawModelExecute(void* thisptr, void* context, void *state, const Mo
 		materialChamsIgnorez = Util::CreateMaterial(XORSTR("VertexLitGeneric"), XORSTR("VGUI/white_additive"), true, true, true, true, true);
 		materialChamsFlat = Util::CreateMaterial(XORSTR("UnlitGeneric"), XORSTR("VGUI/white_additive"), false, true, true, true, true);
 		materialChamsFlatIgnorez = Util::CreateMaterial(XORSTR("UnlitGeneric"), XORSTR("VGUI/white_additive"), true, true, true, true, true);
+		materialChamsCrystal = material->FindMaterial("models/inventory_items/trophy_majors/crystal_clear",TEXTURE_GROUP_OTHER);
+		materialChamsGold = material->FindMaterial("models/inventory_items/trophy_majors/gold",TEXTURE_GROUP_OTHER);
 		materialChamsArms = Util::CreateMaterial(XORSTR("VertexLitGeneric"), XORSTR("VGUI/white_additive"), false, true, true, true, true);
 		materialChamsWeapons = Util::CreateMaterial(XORSTR("VertexLitGeneric"), XORSTR("VGUI/white_additive"), false, true, true, true, true);
 		materialsCreated = true;
