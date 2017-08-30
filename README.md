@@ -1,3 +1,6 @@
+# Hitlerhook
+
+**Hitlerhook has reached end of life.** Hitlerhook will no longer be supported or updated. The community is encouraged to update it themselvs.
 
 ===================
 
