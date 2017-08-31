@@ -1,5 +1,5 @@
 //#include <unordered_map>
-//#include <set>
+#include <set>
 #include "interfaces.h"
 
 IBaseClientDLL* client = nullptr;
@@ -59,11 +59,10 @@ void Interfaces::FindInterfaces()
 	localize = GetInterface<ILocalize>(XORSTR("./bin/linux64/localize_client.so"), XORSTR( "Localize_"));
 	commandline = GetSymbolAddress<CommandLineFn>(XORSTR("./bin/linux64/libtier0_client.so"), XORSTR("CommandLine"))();
 }
-/*
+
 void Interfaces::DumpInterfaces()
 {
 	std::stringstream ss;
-	char cwd[1024];
 
 	std::vector<const char*> modules;
 
@@ -109,10 +108,7 @@ void Interfaces::DumpInterfaces()
 		ss << '\n';
 	}
 
-	getcwd(cwd, sizeof(cwd));
-
-	std::string interfacesPath = std::string(cwd) + XORSTR("/interfaces.txt");
+	std::string interfacesPath = XORSTR("/tmp/interfaces.txt");
 
 	std::ofstream(interfacesPath) << ss.str();
 }
-*/

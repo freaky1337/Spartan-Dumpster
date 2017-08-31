@@ -122,9 +122,7 @@ bool NetVarManager::HookProp(const char* tableName, const char* propName, RecvVa
 	NetVarManager::GetProp(NetVarManager::GetTables(), tableName, propName, &recvProp);
 	if (!recvProp)
 		return false;
-
 	recvProp->m_ProxyFn = f;
-
 	return true;
 }
 */
@@ -133,17 +131,13 @@ void NetVarManager::DumpNetvars()
 {
 	std::stringstream ss;
 	char cwd[1024];
-
 	for (ClientClass* pClass = client->GetAllClasses(); pClass != NULL; pClass = pClass->m_pNext)
 	{
 		RecvTable* table = pClass->m_pRecvTable;
 		ss << NetVarManager::DumpTable(table, 0);
 	}
-
 	getcwd(cwd, sizeof(cwd));
-
 	std::string netvarsPath = std::string(cwd) + XORSTR("/netvars.txt");
-
 	std::ofstream(netvarsPath) << ss.str();
 }
  */

@@ -48,24 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/raspbian/Hitlerhook
+CMAKE_SOURCE_DIR = /home/benjamin/Hitlerhook
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/raspbian/Hitlerhook
+CMAKE_BINARY_DIR = /home/benjamin/Hitlerhook
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -78,11 +67,22 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/raspbian/Hitlerhook/CMakeFiles /home/raspbian/Hitlerhook/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/Hitlerhook/CMakeFiles /home/benjamin/Hitlerhook/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/raspbian/Hitlerhook/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/benjamin/Hitlerhook/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1148,6 +1148,33 @@ src/Hacks/jumpthrow.s: src/Hacks/jumpthrow.cpp.s
 src/Hacks/jumpthrow.cpp.s:
 	$(MAKE) -f CMakeFiles/Hitlerhook.dir/build.make CMakeFiles/Hitlerhook.dir/src/Hacks/jumpthrow.cpp.s
 .PHONY : src/Hacks/jumpthrow.cpp.s
+
+src/Hacks/moonwalk.o: src/Hacks/moonwalk.cpp.o
+
+.PHONY : src/Hacks/moonwalk.o
+
+# target to build an object file
+src/Hacks/moonwalk.cpp.o:
+	$(MAKE) -f CMakeFiles/Hitlerhook.dir/build.make CMakeFiles/Hitlerhook.dir/src/Hacks/moonwalk.cpp.o
+.PHONY : src/Hacks/moonwalk.cpp.o
+
+src/Hacks/moonwalk.i: src/Hacks/moonwalk.cpp.i
+
+.PHONY : src/Hacks/moonwalk.i
+
+# target to preprocess a source file
+src/Hacks/moonwalk.cpp.i:
+	$(MAKE) -f CMakeFiles/Hitlerhook.dir/build.make CMakeFiles/Hitlerhook.dir/src/Hacks/moonwalk.cpp.i
+.PHONY : src/Hacks/moonwalk.cpp.i
+
+src/Hacks/moonwalk.s: src/Hacks/moonwalk.cpp.s
+
+.PHONY : src/Hacks/moonwalk.s
+
+# target to generate assembly for a file
+src/Hacks/moonwalk.cpp.s:
+	$(MAKE) -f CMakeFiles/Hitlerhook.dir/build.make CMakeFiles/Hitlerhook.dir/src/Hacks/moonwalk.cpp.s
+.PHONY : src/Hacks/moonwalk.cpp.s
 
 src/Hacks/namechanger.o: src/Hacks/namechanger.cpp.o
 
@@ -2829,9 +2856,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Hitlerhook"
+	@echo "... rebuild_cache"
 	@echo "... src/ATGUI/Tabs/aimbottab.o"
 	@echo "... src/ATGUI/Tabs/aimbottab.i"
 	@echo "... src/ATGUI/Tabs/aimbottab.s"
@@ -2946,6 +2973,9 @@ help:
 	@echo "... src/Hacks/jumpthrow.o"
 	@echo "... src/Hacks/jumpthrow.i"
 	@echo "... src/Hacks/jumpthrow.s"
+	@echo "... src/Hacks/moonwalk.o"
+	@echo "... src/Hacks/moonwalk.i"
+	@echo "... src/Hacks/moonwalk.s"
 	@echo "... src/Hacks/namechanger.o"
 	@echo "... src/Hacks/namechanger.i"
 	@echo "... src/Hacks/namechanger.s"
